@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+ <!--
+  * PeakForecast
+  *
+  * Copyright (c) 2009-2012 INRIA, University of Lille 1
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+  * version 2 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  * Lesser General Public License for more details.
+  *
+  * You should have received a copy of the GNU Lesser General Public
+  * License along with this library; if not, write to the Free Software
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  *
+	Contact: contact-adam@lifl.fr
+	Author: Daniel Fouomene
+	Contributor(s): Romain Rouvoy, Lionel Seinturier
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.ow2.frascati.akka.fabric</groupId>
+  <artifactId>ws-parent</artifactId>
+  <packaging>pom</packaging>
+
+  <name>PeakForecast</name>
+
+  <parent>
+    <groupId>org.ow2.frascati.akka.fabric</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.4</version>
+  </parent>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.cxf</groupId>
+          <artifactId>cxf-codegen-plugin</artifactId>
+          <version>${cxf.version}</version>
+          <executions>
+            <execution>
+              <id>generate-sources</id>
+              <phase>generate-sources</phase>
+              <configuration>
+                <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
+                <wsdlOptions>
+                  <wsdlOption>
+                    <wsdl>${wsdl.file}</wsdl>
+                  </wsdlOption>
+                </wsdlOptions>
+              </configuration>
+              <goals>
+                <goal>wsdl2java</goal>
+              </goals>
+            </execution>
+          </executions>
+          <!-- Dependency needed to avoid org.apache.xerces.impl.dv.DVFactoryException, CXF issue -->
+          <dependencies>
+            <dependency>
+              <groupId>xerces</groupId>
+              <artifactId>xercesImpl</artifactId>
+              <version>${xerces.version}</version>
+              <scope>compile</scope>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <dependencyManagement />
+
+
+  <dependencies>
+      <!-- OW2 FraSCAti WS Binding. -->
+    <dependency>
+      <groupId>org.ow2.frascati</groupId>
+      <artifactId>frascati-binding-ws</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <!-- MongoDB Java Driver -->
+   <dependency>
+	<groupId>org.mongodb</groupId>
+	<artifactId>mongo-java-driver</artifactId>
+	<version>2.8.0</version>
+   </dependency> 
+   <!--  Twitter4J is an unofficial Java library for the Twitter API -->
+    <dependency>
+       <groupId>org.twitter4j</groupId>
+       <artifactId>twitter4j-core</artifactId>
+       <version>3.0.3</version>
+    </dependency>
+    <!--     Commons-Email aims to provide an API for sending email. It is built on top of the JavaMail API, which it aims to simplify. -->
+	<dependency>
+	  <groupId>org.apache.commons</groupId>
+	  <artifactId>commons-email</artifactId>
+	  <version>1.3.1</version>
+	</dependency>
+  </dependencies>
+  
+</project>

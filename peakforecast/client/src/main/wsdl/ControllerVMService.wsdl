@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ControllerVMService" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="start" type="tns:start"/>
+  <xsd:complexType name="start">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="startResponse" type="tns:startResponse"/>
+  <xsd:complexType name="startResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="startResponse">
+    <wsdl:part element="tns:startResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="start">
+    <wsdl:part element="tns:start" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ControllerVMServicePortType">
+    <wsdl:operation name="start">
+      <wsdl:input message="tns:start" name="start">
+    </wsdl:input>
+      <wsdl:output message="tns:startResponse" name="startResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ControllerVMServiceSoapBinding" type="tns:ControllerVMServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="start">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="start">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="startResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ControllerVMService">
+    <wsdl:port binding="tns:ControllerVMServiceSoapBinding" name="ControllerVMServicePort">
+      <soap:address location="http://192.168.0.6:9000/ControllerVMService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

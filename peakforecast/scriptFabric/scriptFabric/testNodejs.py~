@@ -1,0 +1,9 @@
+@task(alias='testNodejs')
+def configImage4():
+    run('echo "DEBUT Test node.js"')
+    run('echo "Debut copy example helloword"') 
+    put('/home/daniel/tmp/hello.js','hello.js')
+    run('echo "copy completed"') 
+    run('echo "DEBUT Test node.js"')
+    run('node ./hello')
+    run('echo "END Test node.js"')

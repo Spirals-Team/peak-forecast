@@ -1,0 +1,64 @@
+<!--  PeakForecast        -->
+<!--  Copyright (C) 2009-2012 INRIA, University of Lille 1                          -->
+<!--                                                                                -->
+<!--  This library is free software; you can redistribute it and/or                 -->
+<!--  modify it under the terms of the GNU Lesser General Public                    -->
+<!--  License as published by the Free Software Foundation; either                  -->
+<!--  version 2 of the License, or (at your option) any later version.              -->
+<!--                                                                                -->
+<!--  This library is distributed in the hope that it will be useful,               -->
+<!--  but WITHOUT ANY WARRANTY; without even the implied warranty of                -->
+<!--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU             -->
+<!--  Lesser General Public License for more details.                               -->
+<!--                                                                                -->
+<!--  You should have received a copy of the GNU Lesser General Public              -->
+<!--  License along with this library; if not, write to the Free Software           -->
+<!--  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA     -->
+<!--                                                                                -->
+<!--                                                                                -->
+<!--  Contact: contact-adam@lifl.fr
+	  Author: Daniel Fouomene
+	  Contributor(s): Romain Rouvoy, Lionel Seinturier                                                    -->
+
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="peakforecast" default="jar">
+
+    <property name="src.dir" value="src" />
+    <property name="build.dir" value="target" />
+    <property name="composite.annotations.file" value="${src.dir}/main/resources/peakforecast.composite"/>
+    <property name="composite.ws.file" value="${src.dir}/main/resources/peakforecast-ws.composite"/>
+
+    <!-- ================================= -->
+    <!--          target: clean            -->
+    <!-- ================================= -->
+    <target name="clean" description="--> clean the example">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <!-- ================================= -->
+    <!--          target: resolve          -->
+    <!-- ================================= -->
+    <target name="resolve" description="--> retrieve dependencies with ivy">
+        <ivy:retrieve />
+    </target>
+
+    <!-- ================================= -->
+    <!--          target: compile          -->
+    <!-- ================================= -->
+    <target name="compile" depends="clean, resolve" description="--> PeakForecast">
+        <ivy:cachepath organisation="org.eclipse.stp.sca.osoa.java" module="osoa-java-api" revision="1.0" inline="true" pathid="classpath"/>
+        <mkdir dir="${build.dir}" />
+        <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath" />
+    </target>
+
+    <!-- ================================= -->
+    <!--          target: jar             -->
+    <!-- ================================= -->
+    <target name="jar" depends="compile" description="--> create the jar for the example">
+        <copy todir="${build.dir}" file="${composite.annotations.file}" />
+    	<copy todir="${build.dir}" file="${composite.ws.file}" />
+        <jar jarfile="${build.dir}/peakforecast-1.0.jar" >
+            <fileset dir="${build.dir}" />
+        </jar>
+    </target>
+
+</project>

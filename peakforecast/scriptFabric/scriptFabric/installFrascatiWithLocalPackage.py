@@ -1,0 +1,10 @@
+@task(alias='installFrascatiWithLocalPackage')
+def configImage3():
+    run('echo "DEBUT install Frascati"')
+    run('echo "Debut copy package"') 
+    put('/home/daniel/tmp/frascati-1.4-bin.zip','frascati-1.4-bin.zip')
+    run('echo "copy completed"') 
+    run('echo "Debut unpack"')         
+    run('unzip frascati-1.4-bin.zip')   
+    run('echo "unpack completed"')
+    sudo('export PATH=/home/allegrograph/frascati-runtime-1.4/bin:$PATH')

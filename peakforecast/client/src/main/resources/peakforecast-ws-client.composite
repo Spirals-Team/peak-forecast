@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:wsdli="http://www.w3.org/2004/08/wsdl-instance" name="peakforecast-ws-client" targetNamespace="http://frascati.ow2.org/peakforecast-ws">
+  <service name="r" promote="monitor/r">
+    <interface.java interface="java.lang.Runnable"/>
+  </service>
+  <component name="monitor">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.Monitor"/>
+    <service name="r">
+      <interface.java interface="java.lang.Runnable"/>
+    </service>
+    <reference name="controllerSoftwareService">
+      <binding.ws wsdli:wsdlLocation="http://192.168.1.2:9000/ControllerSoftwareService?wsdl"
+                  wsdlElement="http://api.peakforecast.fabric.akka.frascati.ow2.org/#wsdl.port(ControllerSoftwareService/ControllerSoftwareServicePort)" 
+                  />
+    </reference>
+    <reference name="controllerVMService">
+      <binding.ws wsdli:wsdlLocation="http://192.168.1.2:9000/ControllerVMService?wsdl" 
+                  wsdlElement="http://api.peakforecast.fabric.akka.frascati.ow2.org/#wsdl.port(ControllerVMService/ControllerVMServicePort)" 
+                  />
+    </reference>
+    <reference name="controllerKubectlService">
+      <binding.ws wsdli:wsdlLocation="http://192.168.1.2:9000/ControllerKubectlService?wsdl" 
+                  wsdlElement="http://api.peakforecast.fabric.akka.frascati.ow2.org/#wsdl.port(ControllerKubectlService/ControllerKubectlServicePort)" 
+                  />
+    </reference>
+    <reference name="eventNotificationAlertService">
+      <binding.ws wsdli:wsdlLocation="http://192.168.1.2:9000/EventNotificationAlertService?wsdl" 
+                  wsdlElement="http://api.peakforecast.fabric.akka.frascati.ow2.org/#wsdl.port(EventNotificationAlertService/EventNotificationAlertServicePort)" 
+                  />
+    </reference>
+  </component>
+  <component name="shell">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.ShellImpl"/>
+  </component>
+  
+  <wire source="monitor/sh" target="shell/ShellService"/>
+  
+</composite>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  PeakForecast                -->
+<!--  Copyright (C) 2008-2012 INRIA, University of Lille 1                          -->
+<!--                                                                                -->
+<!--  This library is free software; you can redistribute it and/or                 -->
+<!--  modify it under the terms of the GNU Lesser General Public                    -->
+<!--  License as published by the Free Software Foundation; either                  -->
+<!--  version 2 of the License, or (at your option) any later version.              -->
+<!--                                                                                -->
+<!--  This library is distributed in the hope that it will be useful,               -->
+<!--  but WITHOUT ANY WARRANTY; without even the implied warranty of                -->
+<!--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU             -->
+<!--  Lesser General Public License for more details.                               -->
+<!--                                                                                -->
+<!--  You should have received a copy of the GNU Lesser General Public              -->
+<!--  License along with this library; if not, write to the Free Software           -->
+<!--  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA     -->
+<!--                                                                                -->
+<!--                                                                                -->
+<!-- 	Contact: contact-adam@lifl.fr
+	    Author: Daniel Fouomene
+	    Contributor(s): Romain Rouvoy, Lionel Seinturier       -->
+<composite  xmlns="http://www.osoa.org/xmlns/sca/1.0"
+  xmlns:wsdli="http://www.w3.org/2004/08/wsdl-instance"
+  targetNamespace="http://frascati.ow2.org/peakforecast-ws"
+name="peakforecast-ws-server">
+ 
+  <service name="controllersoftwareservice" promote="controllersoftware/controllersoftwareservice">
+    <interface.java interface="org.ow2.frascati.akka.fabric.peakforecast.api.ControllerSoftwareService" />
+    <binding.ws uri="http://192.168.1.2:9000/ControllerSoftwareService"/>
+  </service>
+  <service name="controllervmservice" promote="controllervm/controllervmservice">
+    <interface.java interface="org.ow2.frascati.akka.fabric.peakforecast.api.ControllerVMService" />
+    <binding.ws uri="http://192.168.1.2:9000/ControllerVMService"/>
+  </service>
+  <service name="controllerkubectlservice" promote="controllerkubectl/controllerkubectlservice">
+    <interface.java interface="org.ow2.frascati.akka.fabric.peakforecast.api.ControllerKubectlService" />
+    <binding.ws uri="http://192.168.1.2:9000/ControllerKubectlService"/>
+  </service>
+  <service name="eventnotificationalertservice" promote="eventnotificationalert/eventnotificationalertservice">
+    <interface.java interface="org.ow2.frascati.akka.fabric.peakforecast.api.EventNotificationAlertService" />
+    <binding.ws uri="http://192.168.1.2:9000/EventNotificationAlertService"/>
+  </service>
+  
+  <component name="controllersoftware">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.ControllerSoftwareImpl"/>
+    <service name="controllersoftwareservice">
+      <interface.java interface="org.ow2.frascati.akka.fabric.peakforecast.api.ControllerSoftwareService" />
+    </service>
+  </component>
+  <component name="controllervm">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.ControllerVMImpl"/>
+    <service name="controllervmservice">
+      <interface.java interface="org.ow2.frascati.akka.fabric.peakforecast.api.ControllerVMService" />
+    </service>
+  </component>
+  <component name="controllerkubectl">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.ControllerKubectlImpl"/>
+    <service name="controllerkubectlservice">
+      <interface.java interface="org.ow2.frascati.akka.fabric.peakforecast.api.ControllerKubectlService" />
+    </service>
+  </component> 
+  <component name="eventnotificationalert">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.EventNotificationAlertImpl"/>
+    <service name="eventnotificationalertservice">
+      <interface.java interface="org.ow2.frascati.akka.fabric.peakforecast.api.EventNotificationAlertService" />
+    </service>
+  </component>
+
+ <component name="softwarenodejs">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.SoftwareNodeJS"/> 
+  </component>
+  <component name="softwarefrascati">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.SoftwareFrascati"/> 
+  </component>
+  <component name="shell">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.ShellImpl"/>
+  </component>
+  <component name="twitter">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.TwitterImpl"/>
+  </component>
+  <component name="sms">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.SMSImpl"/>
+  </component>
+  <component name="email">
+    <implementation.java class="org.ow2.frascati.akka.fabric.peakforecast.lib.EmailImpl"/>
+  </component>
+
+  <wire source="softwarenodejs/sh" target="shell/ShellService"/>
+  <wire source="softwarenodejs/softwareFrascati" target="softwarefrascati/SoftwareService"/>
+  <wire source="softwarefrascati/sh" target="shell/ShellService"/>
+  <wire source="controllersoftware/logicielFrascati" target="softwarefrascati/SoftwareService"/>
+  <wire source="controllersoftware/logicielNodejs" target="softwarenodejs/SoftwareService"/>
+  <wire source="controllersoftware/sh" target="shell/ShellService"/>
+  <wire source="controllersoftware/event" target="eventnotificationalert/eventnotificationalertservice"/>
+  <wire source="controllervm/sh" target="shell/ShellService"/>
+  <wire source="controllervm/event" target="eventnotificationalert/eventnotificationalertservice"/>
+  <wire source="controllerkubectl/sh" target="shell/ShellService"/>
+  <wire source="controllerkubectl/event" target="eventnotificationalert/eventnotificationalertservice"/>
+  <wire source="eventnotificationalert/twitter" target="twitter/TwitterService"/>
+  <wire source="eventnotificationalert/sms" target="sms/SMSService"/>
+  <wire source="eventnotificationalert/email" target="email/EmailService"/>
+  
+  
+</composite>

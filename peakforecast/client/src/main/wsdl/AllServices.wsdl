@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ControllerSoftwareService" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+ 
+ <wsdl:types>
+  
+  <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="install" type="tns:install"/>
+  <xsd:complexType name="install">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="arg1" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="installResponse" type="tns:installResponse"/>
+  <xsd:complexType name="installResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+ </xsd:schema>
+ 
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="pause" type="tns:pause"/>
+  <xsd:complexType name="pause">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="pauseResponse" type="tns:pauseResponse"/>
+  <xsd:complexType name="pauseResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+ </xsd:schema>
+ 
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="createContainer" type="tns:createContainer"/>
+  <xsd:complexType name="createContainer">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="createContainerResponse" type="tns:createContainerResponse"/>
+  <xsd:complexType name="createContainerResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+ </xsd:schema>
+ 
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="startContainer" type="tns:startContainer"/>
+  <xsd:complexType name="startContainer">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="startContainerResponse" type="tns:startContainerResponse"/>
+  <xsd:complexType name="startContainerResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+ </xsd:schema>
+ 
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="stopContainer" type="tns:stopContainer"/>
+  <xsd:complexType name="stopContainer">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="stopContainerResponse" type="tns:stopContainerResponse"/>
+  <xsd:complexType name="stopContainerResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+</xsd:schema>
+ 
+ <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="kubectlResize" type="tns:kubectlResize"/>
+  <xsd:complexType name="kubectlResize">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+      <xsd:element name="arg1" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="kubectlResizeResponse" type="tns:kubectlResizeResponse"/>
+  <xsd:complexType name="kubectlResizeResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+</xsd:schema>
+ 
+ <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="send" type="tns:send"/>
+  <xsd:complexType name="send">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="sendResponse" type="tns:sendResponse"/>
+  <xsd:complexType name="sendResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+</xsd:schema>
+ 
+</wsdl:types>
+ 
+   <wsdl:message name="kubectlResize">
+    <wsdl:part element="tns:kubectlResize" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kubectlResizeResponse">
+    <wsdl:part element="tns:kubectlResizeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ControllerKubectlServicePortType">
+    <wsdl:operation name="kubectlResize">
+      <wsdl:input message="tns:kubectlResize" name="kubectlResize">
+    </wsdl:input>
+      <wsdl:output message="tns:kubectlResizeResponse" name="kubectlResizeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ControllerKubectlServiceSoapBinding" type="tns:ControllerKubectlServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="kubectlResize">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="kubectlResize">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kubectlResizeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ControllerKubectlService">
+    <wsdl:port binding="tns:ControllerKubectlServiceSoapBinding" name="ControllerKubectlServicePort">
+      <soap:address location="http://192.168.1.2:9000/ControllerKubectlService"/>
+    </wsdl:port>
+  </wsdl:service>
+ 
+  
+  <wsdl:message name="stopContainerResponse">
+    <wsdl:part element="tns:stopContainerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopContainer">
+    <wsdl:part element="tns:stopContainer" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ControllerVMServicePortType">
+    <wsdl:operation name="stopContainer">
+      <wsdl:input message="tns:stopContainer" name="stopContainer">
+    </wsdl:input>
+      <wsdl:output message="tns:stopContainerResponse" name="stopContainerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ControllerVMServiceSoapBinding" type="tns:ControllerVMServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="stopContainer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="stopContainer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="stopContainerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ControllerVMService">
+    <wsdl:port binding="tns:ControllerVMServiceSoapBinding" name="ControllerVMServicePort">
+      <soap:address location="http://192.168.1.2:9000/ControllerVMService"/>
+    </wsdl:port>
+  </wsdl:service>
+
+  <wsdl:message name="startContainerResponse">
+    <wsdl:part element="tns:startContainerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startContainer">
+    <wsdl:part element="tns:startContainer" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ControllerVMServicePortType">
+    <wsdl:operation name="startContainer">
+      <wsdl:input message="tns:startContainer" name="startContainer">
+    </wsdl:input>
+      <wsdl:output message="tns:startContainerResponse" name="startContainerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ControllerVMServiceSoapBinding" type="tns:ControllerVMServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="startContainer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="startContainer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="startContainerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ControllerVMService">
+    <wsdl:port binding="tns:ControllerVMServiceSoapBinding" name="ControllerVMServicePort">
+      <soap:address location="http://192.168.1.2:9000/ControllerVMService"/>
+    </wsdl:port>
+  </wsdl:service>
+
+  <wsdl:message name="createContainerResponse">
+    <wsdl:part element="tns:createContainerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createContainer">
+    <wsdl:part element="tns:createContainer" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ControllerVMServicePortType">
+    <wsdl:operation name="createContainer">
+      <wsdl:input message="tns:createContainer" name="createContainer">
+    </wsdl:input>
+      <wsdl:output message="tns:createContainerResponse" name="createContainerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ControllerVMServiceSoapBinding" type="tns:ControllerVMServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createContainer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createContainer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createContainerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ControllerVMService">
+    <wsdl:port binding="tns:ControllerVMServiceSoapBinding" name="ControllerVMServicePort">
+      <soap:address location="http://192.168.1.2:9000/ControllerVMService"/>
+    </wsdl:port>
+  </wsdl:service>
+
+  <wsdl:message name="pauseResponse">
+    <wsdl:part element="tns:pauseResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pause">
+    <wsdl:part element="tns:pause" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ControllerVMServicePortType">
+    <wsdl:operation name="pause">
+      <wsdl:input message="tns:pause" name="pause">
+    </wsdl:input>
+      <wsdl:output message="tns:pauseResponse" name="pauseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ControllerVMServiceSoapBinding" type="tns:ControllerVMServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="pause">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pause">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pauseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ControllerVMService">
+    <wsdl:port binding="tns:ControllerVMServiceSoapBinding" name="ControllerVMServicePort">
+      <soap:address location="http://192.168.1.2:9000/ControllerVMService"/>
+    </wsdl:port>
+  </wsdl:service>
+ 
+  <wsdl:message name="sendResponse">
+    <wsdl:part element="tns:sendResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="send">
+    <wsdl:part element="tns:send" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EventNotificationAlertServicePortType">
+    <wsdl:operation name="send">
+      <wsdl:input message="tns:send" name="send">
+    </wsdl:input>
+      <wsdl:output message="tns:sendResponse" name="sendResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EventNotificationAlertServiceSoapBinding" type="tns:EventNotificationAlertServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="send">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="send">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EventNotificationAlertService">
+    <wsdl:port binding="tns:EventNotificationAlertServiceSoapBinding" name="EventNotificationAlertServicePort">
+      <soap:address location="http://192.168.1.2:9000/EventNotificationAlertService"/>
+    </wsdl:port>
+  </wsdl:service>
+
+  <wsdl:message name="installResponse">
+    <wsdl:part element="tns:installResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="install">
+    <wsdl:part element="tns:install" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ControllerSoftwareServicePortType">
+    <wsdl:operation name="install">
+      <wsdl:input message="tns:install" name="install">
+    </wsdl:input>
+      <wsdl:output message="tns:installResponse" name="installResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ControllerSoftwareServiceSoapBinding" type="tns:ControllerSoftwareServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="install">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="install">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="installResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ControllerSoftwareService">
+    <wsdl:port binding="tns:ControllerSoftwareServiceSoapBinding" name="ControllerSoftwareServicePort">
+      <soap:address location="http://192.168.1.2:9000/ControllerSoftwareService"/>
+    </wsdl:port>
+  </wsdl:service>
+  
+  
+</wsdl:definitions>
+

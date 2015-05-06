@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ControllerKubectlService" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ 
+ 
+<wsdl:types>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="kubectlResize" type="tns:kubectlResize"/>
+  <xsd:complexType name="kubectlResize">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+      <xsd:element name="arg1" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="kubectlResizeResponse" type="tns:kubectlResizeResponse"/>
+  <xsd:complexType name="kubectlResizeResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+</xsd:schema>
+</wsdl:types>
+  
+  
+  <wsdl:message name="kubectlResize">
+    <wsdl:part element="tns:kubectlResize" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kubectlResizeResponse">
+    <wsdl:part element="tns:kubectlResizeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ControllerKubectlServicePortType">
+    <wsdl:operation name="kubectlResize">
+      <wsdl:input message="tns:kubectlResize" name="kubectlResize">
+    </wsdl:input>
+      <wsdl:output message="tns:kubectlResizeResponse" name="kubectlResizeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ControllerKubectlServiceSoapBinding" type="tns:ControllerKubectlServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="kubectlResize">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="kubectlResize">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kubectlResizeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ControllerKubectlService">
+    <wsdl:port binding="tns:ControllerKubectlServiceSoapBinding" name="ControllerKubectlServicePort">
+      <soap:address location="http://192.168.1.2:9000/ControllerKubectlService"/>
+    </wsdl:port>
+  </wsdl:service>
+  
+</wsdl:definitions>

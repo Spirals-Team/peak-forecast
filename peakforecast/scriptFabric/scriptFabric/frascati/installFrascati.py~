@@ -1,0 +1,15 @@
+from fabric.api import *
+from fabric.operations import *
+
+@task
+def installFrascatiWithLocalPackage(username):
+    run('echo "DEBUT install Frascati"')
+    run('echo "Debut copy package"') 
+    with settings(hide('warnings','running','stdout','stderr'),warn_only=True,seek=True):
+	    put('/home/daniel/tmp/frascati-1.4-bin.zip','frascati-1.4-bin.zip',)
+	    run('echo "copy completed"') 
+	    run('echo "Debut unpack"')         
+	    run('unzip frascati-1.4-bin.zip')   
+	    run('echo "unpack completed"')
+	    path="export PATH=/home/"+username+"/frascati-runtime-1.4/bin:$PATH"
+	    sudo(path)

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="server/src/main/java"/>
+	<classpathentry kind="src" path="client/src/main/java"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/AKKA_lib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MONGODB_lib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/FRASCATI_lib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/TWITTER_lib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/COMMONSEMAIL_lib"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EventNotificationAlertService" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:tns="http://api.peakforecast.fabric.akka.frascati.ow2.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="send" type="tns:send"/>
+  <xsd:complexType name="send">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="sendResponse" type="tns:sendResponse"/>
+  <xsd:complexType name="sendResponse">
+    <xsd:sequence/>
+  </xsd:complexType>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sendResponse">
+    <wsdl:part element="tns:sendResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="send">
+    <wsdl:part element="tns:send" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EventNotificationAlertServicePortType">
+    <wsdl:operation name="send">
+      <wsdl:input message="tns:send" name="send">
+    </wsdl:input>
+      <wsdl:output message="tns:sendResponse" name="sendResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EventNotificationAlertServiceSoapBinding" type="tns:EventNotificationAlertServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="send">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="send">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EventNotificationAlertService">
+    <wsdl:port binding="tns:EventNotificationAlertServiceSoapBinding" name="EventNotificationAlertServicePort">
+      <soap:address location="http://192.168.1.210:9000/EventNotificationAlertService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

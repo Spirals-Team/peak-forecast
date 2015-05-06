@@ -1,0 +1,14 @@
+upstream 192.168.0.6 {
+#debut
+server 192.168.0.6:81;
+server 192.168.0.122:80;
+server 192.168.0.122:80clear;
+#fin
+}
+server {
+listen 80;
+server_name 192.168.0.6;
+location / {
+proxy_pass http://192.168.0.6;
+}
+}

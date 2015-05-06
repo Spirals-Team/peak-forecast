@@ -1,0 +1,6 @@
+from fabric.api import task, env
+@task(alias='properties')
+def properties(namehost,username,passworduser):
+    env.host_string=namehost
+    env.user=username
+    env.password=passworduser
